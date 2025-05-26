@@ -1,0 +1,32 @@
+package pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class HomePage{
+	public WebDriver driver;
+	
+	public HomePage(WebDriver driver)
+	{
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
+	@FindBy(xpath="//p[text()='Manage Category']")
+	WebElement manageCategoryLink;
+	
+	@FindBy(xpath="//p[text()='Manage News']")
+	WebElement manageNewsLink;
+	
+	public CategoryPage clickOnCategory()
+	{
+		manageCategoryLink.click();
+		return new CategoryPage(driver);//chaining of pages
+	}
+	public NewsPage clickOnManageNews()
+	{
+		manageNewsLink.click();
+		return new NewsPage(driver);//chaining of pages
+	}
+}

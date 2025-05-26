@@ -1,0 +1,19 @@
+<suite name="CrossBrowserTesting">
+	<test name="ChromeTest">
+		<parameter name="browsers" value="Chrome">
+		</parameter>
+		<classes>
+			<class name="testScript.LoginTest">
+			</class>
+		</classes>
+	</test>
+	<test name="EdgeeTest"> <!-- once the above testing will start once the above test completes execution in Chrome-->
+		<parameter name="browsers" value="Edge">
+		</parameter>
+		<classes>
+			<class name="testScript.CategoryTest">
+			</class>
+		</classes>
+	</test>
+
+</suite>
