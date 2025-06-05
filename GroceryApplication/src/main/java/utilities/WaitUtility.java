@@ -39,6 +39,6 @@
  	} 
  	 
  	public void implicitWait(WebDriver driver) { 
- 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10)); 
+ 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20)); 
  	} 
  }

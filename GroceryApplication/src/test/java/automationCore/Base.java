@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 import constants.Constants;
 import utilities.ScreenshotUtility;
+import utilities.WaitUtility;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -27,6 +28,7 @@ public class Base {
 	public WebDriver driver;
 	Properties prop;
 	FileInputStream fileinpStream;
+	
 
 
   @BeforeMethod
@@ -47,7 +49,8 @@ public class Base {
 		 
 	  driver.get(prop.getProperty("baseurl"));
 	  driver.manage().window().maximize();
-	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+	  WaitUtility waitUtility = new WaitUtility();
+	  waitUtility.implicitWait(driver);
 	 
   }
 

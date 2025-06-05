@@ -12,16 +12,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import seleniumbasics.Base;
 
-public class FileUploadUtility extends Base{
+public class FileUploadUtility{
 	
 	public void fileUploadUsingSendKeys(WebElement element, String filePath)
 	{
 			element.sendKeys(filePath);
 	}
 	
-	public void fileUploadUsingRobotClass(WebElement element,WebElement TextBxElement,String Filepath) throws AWTException
+	public void fileUploadUsingRobotClass(WebElement element,WebElement TextBxElement,String Filepath, WebDriver driver) throws AWTException
 	{
 		Actions actions = new Actions(driver);
 		actions.click(TextBxElement).perform();

@@ -4,6 +4,9 @@
 		</parameter>
 		<classes>
 			<class name="testScript.LoginTest"><!-- all methods inside this particular class will run-->
+			<methods>
+			<include name="verifyUserLoginWithInValidCredentials" />>
+			</methods>
 			</class>
 		</classes>
 	</test>
@@ -12,6 +15,9 @@
 		</parameter>
 		<classes>
 			<class name="testScript.CategoryTest">
+			<methods>
+			<include name="verifyAddNewCategoryWithValidDetails" />>
+			</methods>
 			</class>
 		</classes>
 	</test>

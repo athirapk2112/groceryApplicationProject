@@ -6,6 +6,7 @@ import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
 public class Retry implements IRetryAnalyzer {//IRetryAnalyzer interface implements
 
+	//network issues, page load time or other temp conditions
 	 private static final Logger LOG = (Logger) LogManager.getLogger("Retry.class");  //to log the results of retry attempts using the Logger instance 
 	 	private static final int maxTry = 3;    
 	 	private int count = 0;  //initialize counter for tracking  

@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Constants;
 import pages.CategoryPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -24,31 +25,30 @@ public class NewsTest extends Base {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.loginByUsingExcelData();
 		newspage = homepage.clickOnManageNews().clickOnNewButton();
-		newsValue = newspage.enterNews("Big Breaking News");
+		newsValue = newspage.enterNews(Constants.addNews);
 		newspage.scrollToViewSaveButton().clickOnSaveButton();
-		Assert.assertTrue(newspage.isSuccessAlertDisplayed(), "Test failed: Success message is not displayed.");
+		Assert.assertTrue(newspage.isSuccessAlertDisplayed(), Constants.assertion_AddAlert_News);
 	}
 
 	@Test(priority = 2)
-	public void searchCategory() throws IOException {
+	public void searchAddedNews() throws IOException {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.loginByUsingExcelData();
-		System.out.println("New heading : " + newsValue);
-		newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox().enterSearchText(newsValue);
+				newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox().enterSearchText(newsValue);
 		newspage.clickOnSearchSubmitButton();
 		String searchStrg = newspage.verifySearchedNews();
-		Assert.assertEquals(searchStrg, newsValue, "Test failed:Added news not added to the table");
+		Assert.assertEquals(searchStrg, newsValue,Constants.assertion_Add_News);
 	}
 
 	@Test(priority = 3)
 	public void resetSearch() throws IOException {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.loginByUsingExcelData();
-		newspage = newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox()
+		newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox()
 				.enterSearchText(newsValue);
 		newspage.clickOnSearchSubmitButton().resetSearchBox();
 		boolean searchBxexists = newspage.verifyResetSearchFunctionality();
-		Assert.assertFalse(searchBxexists, "Test failed:Reset Functionality is not working");
+		Assert.assertFalse(searchBxexists, Constants.assertion_ResetSearch_News);
 	}
 
 	@Test(priority = 4)
@@ -59,13 +59,13 @@ public class NewsTest extends Base {
 		newspage.clickOnSearchSubmitButton();
 		updatedNewsValue = newspage.editAddedNewsItem(newsValue);
 		Assert.assertTrue(newspage.verifyAlertForUpdateFunctionality(),
-				"Test failed: Update alert after update action is not displayed.");
+				Constants.assertion_UpdateAlert_News);
 
 		newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox()
 				.enterSearchText(updatedNewsValue);
 		newspage.clickOnSearchSubmitButton();
 		String searchStrg = newspage.verifySearchedNews();
-		Assert.assertEquals(searchStrg, updatedNewsValue, "Test failed:Added news not added to the table");
+		Assert.assertEquals(searchStrg, updatedNewsValue, Constants.assertion_Update_News);
 	}
 
 	@Test(priority = 5)
@@ -76,7 +76,7 @@ public class NewsTest extends Base {
 				.enterSearchText(updatedNewsValue);
 		newspage.clickOnSearchSubmitButton().deleteNewsItem();
 		Assert.assertTrue(newspage.isSuccessAlertDisplayed(),
-				"Test failed: Success alert after delete action is not displayed.");
+				Constants.assertion_Delete_News);
 
 	}
 

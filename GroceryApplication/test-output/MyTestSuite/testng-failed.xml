@@ -2,15 +2,21 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [MyTestSuite]">
   <parameter name="browsers" value="Chrome"/>
+  <listeners>
+    <listener class-name="listeners.Listeners"/>
+    <listener class-name="listeners.RetryListener"/>
+  </listeners>
   <test thread-count="5" name="MyTest(failed)">
     <classes>
-      <class name="testScript.CategoryTest">
+      <class name="testScript.NewsTest">
         <methods>
-          <include name="changeStatusOfItem"/>
+          <include name="resetSearch"/>
+          <include name="deleteNewsItem"/>
           <include name="initializeBrowser"/>
+          <include name="updateNews"/>
           <include name="driverQuit"/>
         </methods>
-      </class> <!-- testScript.CategoryTest -->
+      </class> <!-- testScript.NewsTest -->
     </classes>
   </test> <!-- MyTest(failed) -->
 </suite> <!-- Failed suite [MyTestSuite] -->

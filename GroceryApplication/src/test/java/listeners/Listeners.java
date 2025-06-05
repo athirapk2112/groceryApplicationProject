@@ -13,6 +13,8 @@ import automationCore.Base;
 import utilities.ExtentReportUtility;
 
 //this is an interface used to listen events and act upon
+//listeners are used to track and modify the behavior of test execution
+//they allow us to capture events and perform actions based on them such as login,reporting or debugging
 
 public class Listeners extends Base implements ITestListener{//ITestListener interface has a lot of methods, Listeners class override the ITestListener interface methods
 	ExtentTest test;   

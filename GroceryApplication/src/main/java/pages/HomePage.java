@@ -19,14 +19,22 @@ public class HomePage{
 	@FindBy(xpath="//p[text()='Manage News']")
 	WebElement manageNewsLink;
 	
+	@FindBy(xpath="//p[text()='Manage Product']")
+	WebElement manageProductLink;
+	
 	public CategoryPage clickOnCategory()
 	{
 		manageCategoryLink.click();
-		return new CategoryPage(driver);//chaining of pages
+		return new CategoryPage(driver);
 	}
 	public NewsPage clickOnManageNews()
 	{
 		manageNewsLink.click();
-		return new NewsPage(driver);//chaining of pages
+		return new NewsPage(driver);
+	}
+	public ProductPage clickOnManageProduct()
+	{
+		manageProductLink.click();
+		return new ProductPage(driver);
 	}
 }

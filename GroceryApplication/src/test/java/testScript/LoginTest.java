@@ -13,8 +13,8 @@ import pages.LoginPage;
 
 public class LoginTest extends Base{
 	
-	 LoginPage login;
-  @Test
+  LoginPage login;
+  @Test(groups={"smoke"})
   public void verifyUserLoginWithValidCredentials() throws IOException {
 	   login = new LoginPage(driver);
 	  login.loginByUsingExcelData();
@@ -22,13 +22,13 @@ public class LoginTest extends Base{
 	  //Assertions
 	  Assert.assertTrue(login.isHomePageLoaded(),Constants.LP_verifyLoginWithValidData);
   }
-  @Test
+  @Test(groups={"smoke"})
   public void verifyUserLoginWithInValidCredentials() throws IOException {
 	  login = new LoginPage(driver);
 	  login.loginByUsingExcelDataForInvalidCredentials();
 	  
 	//Assertions
-	  Assert.assertTrue(login.isIncorrectCredentailsAlertDisplayed(),"Login failed for Invalid Password and Valid Username");  
+	  Assert.assertTrue(login.isIncorrectCredentailsAlertDisplayed(),Constants.LP_verifyLoginWithInvalidData);  
 	  
   }
   
@@ -37,7 +37,7 @@ public class LoginTest extends Base{
 	  login = new LoginPage(driver);
 	  login.enterUserNameOnUsernamefield(username).enterPasswordOnPasswordfield(password).clickOnLoginBtn();
 	  //Assertions
-	  Assert.assertTrue(login.isIncorrectCredentailsAlertDisplayed(),"Login failed for Invalid Password and Valid Username");  
+	  Assert.assertTrue(login.isIncorrectCredentailsAlertDisplayed(),Constants.LP_verifyLoginWithInvalidData);  
 	  
 	  
   }

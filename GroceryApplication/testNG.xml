@@ -2,6 +2,12 @@
 <parameter name="browsers" value="Chrome">
 </parameter>
 <test name = "MyTest">
+<listeners> 
+ <listener class-name = "listeners.Listeners"> 
+ </listener> 
+ <listener class-name ="listeners.RetryListener"> 
+ </listener> 
+ </listeners>
 <classes>
 <class name = "testScript.LoginTest">
 </class>

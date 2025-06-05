@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Constants;
 import pages.CategoryPage;
 import pages.HomePage;
 import pages.LoginPage;
@@ -18,25 +19,23 @@ public class CategoryTest extends Base {
 	CategoryPage category;
 	public String categoryValue, updatedCategoryValue;
 
-	@Test(priority = 1)
+	@Test(priority = 1,groups={"smoke"})
 	public void verifyAddNewCategoryWithValidDetails() throws IOException {
 		loginpage = new LoginPage(driver);
-
 		homepage = loginpage.loginByUsingExcelData();
 		category = homepage.clickOnCategory().clickOnNewButton();
-		categoryValue = category.enterCategory("Fries");
+		categoryValue = category.enterCategory(Constants.addCategory);
 		category.clickOnSelectGroup().addImageToCategory().scrollToViewSaveButton().clickOnSaveButton();
-		Assert.assertTrue(category.isSuccessAlertDisplayed(), "Test failed: Success message is not displayed.");
+		Assert.assertTrue(category.isSuccessAlertDisplayed(), Constants.assertion_AddNewCat);
 	}
-
-	@Test(priority = 2)
+	@Test(priority = 2,groups={"smoke"})
 	public void searchCategory() throws IOException {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.loginByUsingExcelData();
 		category = homepage.clickOnCategory().searchNewlyAddedCategory().clickOnSearchBox()
 				.enterSearchText(categoryValue).clickOnSearchSubmitButton();
 		String searchStrg = category.verifySearchedCategory();
-		Assert.assertEquals(searchStrg, categoryValue, "Test failed:Added category not added to the table");
+		Assert.assertEquals(searchStrg, categoryValue, Constants.assertion_SearchCat);
 	}
 
 	@Test(priority = 3)
@@ -47,7 +46,7 @@ public class CategoryTest extends Base {
 		category = homepage.clickOnCategory().searchNewlyAddedCategory().clickOnSearchBox()
 				.enterSearchText(categoryValue).clickOnSearchSubmitButton().resetSearchBox();
 		boolean searchBxexists = category.verifyResetSearchFunctionality();
-		Assert.assertFalse(searchBxexists, "Test failed:Reset Functionality is not working");
+		Assert.assertFalse(searchBxexists, Constants.assertion_ResetCat);
 
 	}
 
@@ -63,7 +62,7 @@ public class CategoryTest extends Base {
 		category = homepage.clickOnCategory().searchNewlyAddedCategory().clickOnSearchBox()
 				.enterSearchText(updatedCategoryValue).clickOnSearchSubmitButton();
 		String searchStrg = category.verifySearchedCategory();
-		Assert.assertEquals(searchStrg, updatedCategoryValue, "Test failed:Updated category not added to the table");
+		Assert.assertEquals(searchStrg, updatedCategoryValue, Constants.assertion_UpdateCat);
 	}
 
 	@Test(priority = 5)
@@ -74,8 +73,8 @@ public class CategoryTest extends Base {
 				.enterSearchText(categoryValue).clickOnSearchSubmitButton();
 		category.changeTheStatusOfItems();
 		String updatedStatus = category.getUpdatedStatusofCategory();
-		Assert.assertEquals(updatedStatus, "Inactive", "Test failed: Category Status not updated");
-		Assert.assertTrue(category.isSuccessAlertDisplayed(), "Test failed: Status updated message is not displayed");
+		Assert.assertEquals(updatedStatus, "Inactive", Constants.assertion_UpdateCat);
+		Assert.assertTrue(category.isSuccessAlertDisplayed(), Constants.assertion_UpdateCatgStatusFalseMsg);
 	}
 
 	@Test(priority = 6)
@@ -85,7 +84,7 @@ public class CategoryTest extends Base {
 		category = homepage.clickOnCategory().searchNewlyAddedCategory().clickOnSearchBox()
 				.enterSearchText(updatedCategoryValue).clickOnSearchSubmitButton().deleteCategory();
 		Assert.assertTrue(category.isSuccessAlertDisplayed(),
-				"Test failed: Alert message after delete category not get displayed");
+				Constants.assertion_DeleteCatg);
 	}
 
 }
