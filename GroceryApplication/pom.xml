@@ -87,11 +87,6 @@
 			<artifactId>lombok</artifactId>
 			<version>1.18.28</version>
 		</dependency>
-		<dependency>
-			<groupId>com.obsqura</groupId>
-			<artifactId>DemoProject</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 	</dependencies>
 
 </project>
