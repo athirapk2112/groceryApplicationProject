@@ -22,6 +22,9 @@ public class HomePage{
 	@FindBy(xpath="//p[text()='Manage Product']")
 	WebElement manageProductLink;
 	
+	@FindBy(xpath="//p[text()='Manage Contact']")
+	WebElement manageContactLink;
+	
 	public CategoryPage clickOnCategory()
 	{
 		manageCategoryLink.click();
@@ -36,5 +39,10 @@ public class HomePage{
 	{
 		manageProductLink.click();
 		return new ProductPage(driver);
+	}
+	public ManageContactPage clickOnManageContact()
+	{
+		manageContactLink.click();
+		return new ManageContactPage(driver);
 	}
 }

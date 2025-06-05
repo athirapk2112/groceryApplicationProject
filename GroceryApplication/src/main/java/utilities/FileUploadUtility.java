@@ -12,20 +12,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+public class FileUploadUtility {
 
-public class FileUploadUtility{
-	
-	public void fileUploadUsingSendKeys(WebElement element, String filePath)
-	{
-			element.sendKeys(filePath);
+	public void fileUploadUsingSendKeys(WebElement element, String filePath) {
+		element.sendKeys(filePath);
 	}
-	
-	public void fileUploadUsingRobotClass(WebElement element,WebElement TextBxElement,String Filepath, WebDriver driver) throws AWTException
-	{
+
+	public void fileUploadUsingRobotClass(WebElement element, WebElement TextBxElement, String Filepath,
+			WebDriver driver) throws AWTException {
 		Actions actions = new Actions(driver);
 		actions.click(TextBxElement).perform();
 		StringSelection strselection = new StringSelection(Filepath);
-		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(strselection, null); 
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(strselection, null);
 		Robot robot = new Robot();
 		robot.delay(500);
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -36,7 +34,7 @@ public class FileUploadUtility{
 		robot.delay(500);
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
-		
+
 	}
 
 }

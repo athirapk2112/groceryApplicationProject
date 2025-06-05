@@ -19,7 +19,7 @@ public class CategoryTest extends Base {
 	CategoryPage category;
 	public String categoryValue, updatedCategoryValue;
 
-	@Test(priority = 1,groups={"smoke"})
+	@Test(priority = 1, groups = { "smoke" })
 	public void verifyAddNewCategoryWithValidDetails() throws IOException {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.loginByUsingExcelData();
@@ -28,7 +28,8 @@ public class CategoryTest extends Base {
 		category.clickOnSelectGroup().addImageToCategory().scrollToViewSaveButton().clickOnSaveButton();
 		Assert.assertTrue(category.isSuccessAlertDisplayed(), Constants.assertion_AddNewCat);
 	}
-	@Test(priority = 2,groups={"smoke"})
+
+	@Test(priority = 2, groups = { "smoke" })
 	public void searchCategory() throws IOException {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.loginByUsingExcelData();
@@ -83,8 +84,7 @@ public class CategoryTest extends Base {
 		homepage = loginpage.loginByUsingExcelData();
 		category = homepage.clickOnCategory().searchNewlyAddedCategory().clickOnSearchBox()
 				.enterSearchText(updatedCategoryValue).clickOnSearchSubmitButton().deleteCategory();
-		Assert.assertTrue(category.isSuccessAlertDisplayed(),
-				Constants.assertion_DeleteCatg);
+		Assert.assertTrue(category.isSuccessAlertDisplayed(), Constants.assertion_DeleteCatg);
 	}
 
 }

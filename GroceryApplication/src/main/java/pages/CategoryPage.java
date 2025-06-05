@@ -187,8 +187,4 @@ public class CategoryPage {
 		return isSearchBoxExists;
 	}
 
-	public String editAddedNewsItem(String categoryValue) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

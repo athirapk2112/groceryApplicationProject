@@ -22,4 +22,6 @@ public class Constants {
 	public static final String assertion_Delete_News="Test failed: Success alert after delete action is not displayed.";
 	public static final String addNews="Big Breaking News";
 	public static final String addCategory="Fries";
+	public static final String assertion_UpdateAlert_Conatct="Test failed: Update alert after update action is not displayed.";
+
 }

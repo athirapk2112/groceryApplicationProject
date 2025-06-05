@@ -34,18 +34,17 @@ public class NewsTest extends Base {
 	public void searchAddedNews() throws IOException {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.loginByUsingExcelData();
-				newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox().enterSearchText(newsValue);
+		newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox().enterSearchText(newsValue);
 		newspage.clickOnSearchSubmitButton();
 		String searchStrg = newspage.verifySearchedNews();
-		Assert.assertEquals(searchStrg, newsValue,Constants.assertion_Add_News);
+		Assert.assertEquals(searchStrg, newsValue, Constants.assertion_Add_News);
 	}
 
 	@Test(priority = 3)
 	public void resetSearch() throws IOException {
 		loginpage = new LoginPage(driver);
 		homepage = loginpage.loginByUsingExcelData();
-		newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox()
-				.enterSearchText(newsValue);
+		newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox().enterSearchText(newsValue);
 		newspage.clickOnSearchSubmitButton().resetSearchBox();
 		boolean searchBxexists = newspage.verifyResetSearchFunctionality();
 		Assert.assertFalse(searchBxexists, Constants.assertion_ResetSearch_News);
@@ -58,8 +57,7 @@ public class NewsTest extends Base {
 		newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox().enterSearchText(newsValue);
 		newspage.clickOnSearchSubmitButton();
 		updatedNewsValue = newspage.editAddedNewsItem(newsValue);
-		Assert.assertTrue(newspage.verifyAlertForUpdateFunctionality(),
-				Constants.assertion_UpdateAlert_News);
+		Assert.assertTrue(newspage.verifyAlertForUpdateFunctionality(), Constants.assertion_UpdateAlert_News);
 
 		newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox()
 				.enterSearchText(updatedNewsValue);
@@ -75,8 +73,7 @@ public class NewsTest extends Base {
 		newspage = homepage.clickOnManageNews().searchNewlyAddedNews().clickOnSearchBox()
 				.enterSearchText(updatedNewsValue);
 		newspage.clickOnSearchSubmitButton().deleteNewsItem();
-		Assert.assertTrue(newspage.isSuccessAlertDisplayed(),
-				Constants.assertion_Delete_News);
+		Assert.assertTrue(newspage.isSuccessAlertDisplayed(), Constants.assertion_Delete_News);
 
 	}
 

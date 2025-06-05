@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="2" parallel="tests" name="Failed suite [ParallelTesting]">
-  <test thread-count="2" parallel="tests" name="MyTest2(failed)">
-    <parameter name="browsers" value="Chrome"/>
+<suite name="Failed suite [MyTestSuite]">
+  <parameter name="browsers" value="Chrome"/>
+  <test thread-count="5" name="MyTest(failed)">
     <classes>
-      <class name="testScript.CategoryTest">
+      <class name="testScript.ManageContactTest">
         <methods>
           <include name="initializeBrowser"/>
           <include name="driverQuit"/>
-          <include name="verifyAddNewCategoryWithValidDetails"/>
+          <include name="updateContact"/>
         </methods>
-      </class> <!-- testScript.CategoryTest -->
+      </class> <!-- testScript.ManageContactTest -->
     </classes>
-  </test> <!-- MyTest2(failed) -->
-  <test thread-count="2" parallel="tests" name="MyTest1(failed)">
-    <parameter name="browsers" value="Chrome"/>
-    <classes>
-      <class name="testScript.LoginTest">
-        <methods>
-          <include name="initializeBrowser"/>
-          <include name="driverQuit"/>
-          <include name="verifyUserLoginWithInValidCredentials"/>
-        </methods>
-      </class> <!-- testScript.LoginTest -->
-    </classes>
-  </test> <!-- MyTest1(failed) -->
-</suite> <!-- Failed suite [ParallelTesting] -->
+  </test> <!-- MyTest(failed) -->
+</suite> <!-- Failed suite [MyTestSuite] -->
