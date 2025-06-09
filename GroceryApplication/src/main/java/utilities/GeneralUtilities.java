@@ -18,7 +18,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class GeneralUtilities {
-	// basic selenium commands like dropdown handling, alert,etc
+	
 
 	public String selectDropdownWithValue(WebElement element, String value) {
 		Select object = new Select(element);
@@ -33,8 +33,7 @@ public class GeneralUtilities {
 	}
 
 	public void scrollDownUsingJavaScriptExecutor(WebDriver driver) {
-		JavascriptExecutor js = (JavascriptExecutor) driver;// casting instance of webDriver instance into the
-															// JavascriptExecutor interface to use the class methods
+		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
 	}
 
@@ -113,7 +112,7 @@ public class GeneralUtilities {
 	}
 
 	public void scrollUntilElementIsVisible(WebElement element, WebDriver driver) {
-		// TODO Auto-generated method stub
+
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].scrollIntoView();", element);
 		js.executeScript("arguments[0].click();", element);

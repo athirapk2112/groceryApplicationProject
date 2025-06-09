@@ -58,7 +58,7 @@ public class CategoryTest extends Base {
 		category = homepage.clickOnCategory();
 		updatedCategoryValue = category.editCategoryItem(categoryValue);
 		Assert.assertTrue(category.isSuccessAlertDisplayed(),
-				"Test failed: Update alert after update action is not displayed.");
+				Constants.assertion_UpdateAlert_News);
 
 		category = homepage.clickOnCategory().searchNewlyAddedCategory().clickOnSearchBox()
 				.enterSearchText(updatedCategoryValue).clickOnSearchSubmitButton();

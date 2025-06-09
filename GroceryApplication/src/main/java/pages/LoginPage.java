@@ -18,16 +18,12 @@ public class LoginPage {
 
 	public WebDriver driver;
 
-	// to initialize all webElements declare in this class
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
-		// PageFactory class used to initialize the webElements using instance of
-		// webDriver using intiElements method
 		PageFactory.initElements(driver, this);
 
 	}
 
-	// using FindBy annotation creating webElements for the page
 	@FindBy(xpath = "//input[@name=\"username\"]")
 	WebElement usernamefield;
 	@FindBy(xpath = "//input[@name=\"password\"]")

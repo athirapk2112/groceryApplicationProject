@@ -1,7 +1,7 @@
 package constants;
 
 public class Constants {
-	//used to store constant values
+	
 	
 	public static final String LP_verifyLoginWithValidData = "Login failed for valid credentials";
 	public static final String LP_verifyLoginWithInvalidData = "Login failed for Invalid Password and Valid Username";

@@ -7,7 +7,7 @@
 			</class>
 		</classes>
 	</test>
-	<test name="EdgeTest"> <!-- this will start once the above test completes execution in Chrome-->
+	<test name="EdgeTest"> 
 		<parameter name="browsers" value="Edge">
 		</parameter>
 		<classes>

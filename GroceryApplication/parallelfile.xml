@@ -3,15 +3,13 @@
 		<parameter name="browsers" value="Chrome">
 		</parameter>
 		<classes>
-			<class name="testScript.LoginTest"><!-- all methods inside this
-				particular class will run-->
+			<class name="testScript.LoginTest">
 				<methods>
 					<include name="verifyUserLoginWithInValidCredentials" />> </methods>
 			</class>
 		</classes>
 	</test>
-	<test name="MyTest2" thread-count="5"> <!-- for parallel testing more than 1
-		thread needs to run-->
+	<test name="MyTest2" thread-count="5">
 		<parameter name="browsers" value="Chrome">
 		</parameter>
 		<classes>

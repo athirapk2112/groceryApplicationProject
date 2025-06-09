@@ -12,20 +12,14 @@ import com.aventstack.extentreports.Status;
 import automationCore.Base;
 import utilities.ExtentReportUtility;
 
-//this is an interface used to listen events and act upon
-//listeners are used to track and modify the behavior of test execution
-//they allow us to capture events and perform actions based on them such as login,reporting or debugging
-
-public class Listeners extends Base implements ITestListener {// ITestListener interface has a lot of methods, Listeners
-																// class override the ITestListener interface methods
+public class Listeners extends Base implements ITestListener {
 	ExtentTest test;
-	ExtentReports extent = ExtentReportUtility.createExtentReports(); //
+	ExtentReports extent = ExtentReportUtility.createExtentReports(); 
 
-	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>(); // for thread safety when parallel run ha[ppens
+	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>(); 
+	public void onTestStart(ITestResult result) { 
 
-	public void onTestStart(ITestResult result) { // implementing the ITestListener methods
-
-		ITestListener.super.onTestStart(result); // parent method invokation
+		ITestListener.super.onTestStart(result);
 		test = extent.createTest(result.getMethod().getMethodName());
 		extentTest.set(test);
 	}
@@ -33,8 +27,7 @@ public class Listeners extends Base implements ITestListener {// ITestListener i
 	public void onTestSuccess(ITestResult result) {
 
 		ITestListener.super.onTestSuccess(result);
-		extentTest.get().log(Status.PASS, "Test Passed"); // whenever a test is success and log the test status in
-															// report
+		extentTest.get().log(Status.PASS, "Test Passed"); 
 	}
 
 	public void onTestFailure(ITestResult result) {
@@ -72,28 +65,25 @@ public class Listeners extends Base implements ITestListener {// ITestListener i
 
 		ITestListener.super.onTestSkipped(result);
 		extentTest.get().log(Status.SKIP, "Test Skipped");
-		// String testMethodName = result.getMethod().getMethodName();
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 		ITestListener.super.onTestFailedButWithinSuccessPercentage(result);
 	}
 
-	public void onTestFailedWithTimeout(ITestResult result) { // Called if a test fails due to a timeout
+	public void onTestFailedWithTimeout(ITestResult result) {
 
 		ITestListener.super.onTestFailedWithTimeout(result);
 	}
 
-	public void onStart(ITestContext context) { // Called at the start of a test context (e.g., suite or test tag in
-												// testng.xml).
+	public void onStart(ITestContext context) { 
 
 		ITestListener.super.onStart(context);
 	}
 
-	public void onFinish(ITestContext context) { // Called at the end of the test context.
+	public void onFinish(ITestContext context) { 
 
-		ITestListener.super.onFinish(context); // Called at the end of the test context.
-		extent.flush(); // extent.flush() saves and writes all the collected logs and test details into
-						// the final report.
+		ITestListener.super.onFinish(context); 
+		extent.flush(); 
 	}
 }

@@ -30,10 +30,10 @@ public class Base {
 	FileInputStream fileinpStream;
 
 	@BeforeMethod
-	@Parameters("browsers") // can pass parameters from xml file
+	@Parameters("browsers")
 	public void initializeBrowser(String browser) throws Exception {
 		prop = new Properties();
-		fileinpStream = new FileInputStream(Constants.configFile);// FileInputStream--> inbuilt class to read files
+		fileinpStream = new FileInputStream(Constants.configFile);
 		prop.load(fileinpStream);
 
 		if (browser.equalsIgnoreCase("Chrome"))
@@ -53,8 +53,7 @@ public class Base {
 	}
 
 	@AfterMethod
-	public void driverQuit(ITestResult itestresult) throws IOException {// ITestResult is an interface used to get the
-																		// testRun status and test case name
+	public void driverQuit(ITestResult itestresult) throws IOException {
 		if (itestresult.getStatus() == ITestResult.FAILURE) {
 			ScreenshotUtility screenshotUtility = new ScreenshotUtility();
 			screenshotUtility.getScreenshot(driver, itestresult.getName());

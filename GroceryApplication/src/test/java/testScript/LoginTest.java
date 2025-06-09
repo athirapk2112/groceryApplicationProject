@@ -19,7 +19,6 @@ public class LoginTest extends Base {
 		login = new LoginPage(driver);
 		login.loginByUsingExcelData();
 
-		// Assertions
 		Assert.assertTrue(login.isHomePageLoaded(), Constants.LP_verifyLoginWithValidData);
 	}
 
@@ -28,7 +27,6 @@ public class LoginTest extends Base {
 		login = new LoginPage(driver);
 		login.loginByUsingExcelDataForInvalidCredentials();
 
-		// Assertions
 		Assert.assertTrue(login.isIncorrectCredentailsAlertDisplayed(), Constants.LP_verifyLoginWithInvalidData);
 
 	}
@@ -37,7 +35,6 @@ public class LoginTest extends Base {
 	public void verifyUserLoginWithInvalidPasswordValidUsername(String username, String password) {
 		login = new LoginPage(driver);
 		login.enterUserNameOnUsernamefield(username).enterPasswordOnPasswordfield(password).clickOnLoginBtn();
-		// Assertions
 		Assert.assertTrue(login.isIncorrectCredentailsAlertDisplayed(), Constants.LP_verifyLoginWithInvalidData);
 
 	}
